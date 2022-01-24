@@ -923,7 +923,7 @@ bool ReadBlockFromDisk(CBlock& block, const FlatFilePos& pos, const Consensus::P
     }
 
     // Check the header
-    if (block.IsProofOfWork() && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
+    if (block.IsProofOfWork() && !CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams))
         return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
 
     // Set flag if proof of stake
@@ -1234,7 +1234,7 @@ void static InvalidChainFound(CBlockIndex* pindexNew) EXCLUSIVE_LOCKS_REQUIRED(c
 
     LogPrintf("%s: invalid block=%s  height=%d  log2_trust=%.8g  moneysupply=%s  date=%s  moneysupply=%s\n", __func__,
       pindexNew->GetBlockHash().ToString(), pindexNew->nHeight,
-      log(pindexNew->nChainTrust.getdouble())/log(2.0), 
+      log(pindexNew->nChainTrust.getdouble())/log(2.0),
       FormatMoney(::ChainActive().Tip()->nMoneySupply),
       FormatISO8601DateTime(pindexNew->GetBlockTime()),
       FormatMoney(pindexNew->nMoneySupply));
@@ -3079,7 +3079,7 @@ static bool FindUndoPos(BlockValidationState &state, int nFile, FlatFilePos &pos
 static bool CheckBlockHeader(const CBlockHeader& block, BlockValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW = true)
 {
     // Check proof of work matches claimed amount
-    if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
+    if (fCheckPOW && !CheckProofOfWork(block.GetPoWHash(), block.nBits, consensusParams))
         return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "high-hash", "proof of work failed");
 
     return true;
@@ -4890,7 +4890,7 @@ bool CheckBlockSignature(const CBlock& block)
 
     if (Solver(txout.scriptPubKey, vSolutions) != TX_PUBKEY)
         return false;
-    
+
     const valtype& vchPubKey = vSolutions[0];
     CPubKey key(vchPubKey);
     if (block.vchBlockSig.empty())
