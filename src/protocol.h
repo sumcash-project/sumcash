@@ -18,6 +18,8 @@
 #include <stdint.h>
 #include <string>
 
+#define ARRAYLEN(array)     (sizeof(array)/sizeof((array)[0]))
+
 /** Message header.
  * (4) message start.
  * (12) command.
