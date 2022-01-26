@@ -4367,6 +4367,8 @@ bool CWallet::CreateCoinStake(const CWallet* pwallet, unsigned int nBits, int64_
     CBigNum bnTargetPerCoinDay;
     bnTargetPerCoinDay.SetCompact(nBits);
 
+    
+
     // Transaction index is required to get to block header
     if (!g_txindex)
         return error("CreateCoinStake : transaction index unavailable");

@@ -100,6 +100,13 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
 
     LOCK2(cs_main, m_mempool.cs);
     CBlockIndex* pindexPrev = ::ChainActive().Tip();
+
+    //allow only PoW blocks at first, later only PoS blocks
+    //  if (pblock->IsProofOfStake() && nBestHeight < PROOF_OF_WORK_BLOCKS)
+ 	// 	return NULL;
+     if (pblock->IsProofOfWork() && pindexPrev->nHeight > 10000)
+ 		return NULL;
+
     assert(pindexPrev != nullptr);
     nHeight = pindexPrev->nHeight + 1;
 
