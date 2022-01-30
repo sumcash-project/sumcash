@@ -41,11 +41,11 @@ QPushButton {
 }
 
 QToolButton:checked, QPushButton:checked {
-    background: #339648;
+    background: #0164f5;
 }
 
 QToolButton:hover, QPushButton:hover {
-    background: #339648;
+    background: #0164f5;
 }
 
 QToolButton:!enabled, QPushButton:!enabled {
@@ -300,7 +300,7 @@ QTabBar::tab {
 }
 
 QTabBar::tab:selected {
-    background: #339648;
+    background: #0164f5;
     color: #ffffff;
 }
 
