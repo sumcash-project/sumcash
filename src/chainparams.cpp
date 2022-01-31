@@ -98,7 +98,7 @@ public:
     CMainParams() {
         strNetworkID = CBaseChainParams::MAIN;
         //consensus.BIP16Height = 0;
-        consensus.BIP34Height = 100000;
+        consensus.BIP34Height = 1;
         consensus.powLimit =            uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 32;
         consensus.bnInitialHashTarget = uint256S("0000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 40;
         consensus.nTargetTimespan = 7 * 24 * 60 * 60;  // one week
@@ -195,7 +195,7 @@ public:
     CTestNetParams() {
         strNetworkID = CBaseChainParams::TESTNET;
         // consensus.BIP16Height = 0;
-        consensus.BIP34Height = 0;
+        consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("0x00");
         consensus.powLimit =            uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 20;
         consensus.bnInitialHashTarget = uint256S("0x00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 32;
