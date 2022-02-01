@@ -99,6 +99,7 @@ public:
         strNetworkID = CBaseChainParams::MAIN;
         //consensus.BIP16Height = 0;
         consensus.BIP34Height = 1;
+        consensus.BIP34Hash = uint256S("00000000785fd05a3f04980eefaca8bb0f15b5638f9e15f1d927b9c4c752f7b9");
         consensus.powLimit =            uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 32;
         consensus.bnInitialHashTarget = uint256S("0000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 40;
         consensus.nTargetTimespan = 7 * 24 * 60 * 60;  // one week
