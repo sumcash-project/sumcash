@@ -148,6 +148,8 @@ public:
         // service bits we want, but we should get them updated to support all service bits wanted by any
         // release ASAP to avoid it where possible.
         vSeeds.empty();
+        // vSeeds.emplace_back("seed.sumcash.org");
+        // vSeeds.emplace_back("seed2.sumcash.org");
 
         
         // Guide https://en.bitcoin.it/wiki/List_of_address_prefixes
