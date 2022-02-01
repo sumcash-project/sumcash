@@ -115,7 +115,7 @@ public:
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00"); // 350000
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000001"); // 350000
         // consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000002a0fac8b39f476"); // 350000
 
         // By default assume that the signatures in ancestors of this block are valid.
@@ -151,7 +151,7 @@ public:
         // vSeeds.emplace_back("seed.sumcash.org");
         // vSeeds.emplace_back("seed2.sumcash.org");
 
-        
+
         // Guide https://en.bitcoin.it/wiki/List_of_address_prefixes
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);  // peercoin: Mainnet Legacy addresses begin with 'P'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,125); // peercoin: addresses begin with 'p'
