@@ -149,7 +149,9 @@ public:
         // release ASAP to avoid it where possible.
         vSeeds.empty();
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);  // peercoin: addresses begin with 'P'
+        
+        // Guide https://en.bitcoin.it/wiki/List_of_address_prefixes
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);  // peercoin: Mainnet Legacy addresses begin with 'P'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,125); // peercoin: addresses begin with 'p'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,187);
         base58Prefixes[EXT_PUBLIC_KEY] = {0xF5, 0x88, 0xB2, 0x1F};
@@ -178,10 +180,10 @@ public:
 
         chainTxData = ChainTxData{
             // Data as of block 967c14abf21214639aeff0a270c4543cd3b80fe53178384ac5aa3c277662f1d0 (height 589659).
-            1560473626, // * UNIX timestamp of last known number of transactions
-            1685,    // * total number of transactions between genesis and that timestamp
+            1554579000, // * UNIX timestamp of last known number of transactions
+            0,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the ChainStateFlushed debug.log lines)
-            0.000285853589354 // * estimated number of transactions per second after that timestamp
+            1 // * estimated number of transactions per second after that timestamp
                         // 1992832/(1635782211-1345400356) = 0.006862798
         };
     }
@@ -268,12 +270,11 @@ public:
 
         chainTxData = ChainTxData{
             // Data as of block 0x1b83b33894d51be0b8b323bfab093f638915236e0e40ba3b52bb33fdbc4053cd (height 442735)
-            0, // * UNIX timestamp of last known number of transactions
+            1554579000, // * UNIX timestamp of last known number of transactions
             0,     // * total number of transactions between genesis and that timestamp
 
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0
-            // 0.003020718 // * estimated number of transactions per second after that timestamp
+            1  // * estimated number of transactions per second after that timestamp
                         // 863997/(1632053274-1346029522) = 0.003020718
 
         };
@@ -343,9 +344,9 @@ public:
         };
 
         chainTxData = ChainTxData{
+            1554579000,
             0,
-            0,
-            0
+            1
         };
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,64);
