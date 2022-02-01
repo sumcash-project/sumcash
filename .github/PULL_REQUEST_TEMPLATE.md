@@ -7,7 +7,7 @@ immediately.
 
 <!--
 Please provide clear motivation for your patch and explain how it improves
-Bitcoin Core user experience or Bitcoin Core developer experience
+Sumcash Core user experience or Sumcash Core developer experience
 significantly:
 
 * Any test improvements or new tests that improve coverage are always welcome.
