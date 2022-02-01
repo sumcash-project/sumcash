@@ -99,21 +99,19 @@ public:
         strNetworkID = CBaseChainParams::MAIN;
         //consensus.BIP16Height = 0;
         consensus.BIP34Height = 100000;
-        consensus.powLimit =            uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 20;
-        consensus.bnInitialHashTarget = uint256S("0x00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 32;
-// -        consensus.powLimit =            uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 32;
-// -        consensus.bnInitialHashTarget = uint256S("0000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 40;
+        consensus.powLimit =            uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 32;
+        consensus.bnInitialHashTarget = uint256S("0000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~arith_uint256(0) >> 40;
         consensus.nTargetTimespan = 7 * 24 * 60 * 60;  // one week
         consensus.nStakeTargetSpacing = 10 * 60; // 10-minute block spacing
         consensus.nTargetSpacingWorkMax = 12 * consensus.nStakeTargetSpacing; // 2-hour
         consensus.nPowTargetSpacing = consensus.nStakeTargetSpacing;
-        consensus.nStakeMinAge = 60 * 60 * 8; // 8 hours //60 * 60 * 24 * 30; // minimum age for coin age
-        consensus.nStakeMaxAge = 60 * 60 * 24 * 90;
+        consensus.nStakeMinAge = 60 * 60 * 24 * 1; // 1 day         //60 * 60 * 24 * 30; // minimum age for coin age
+        consensus.nStakeMaxAge = 60 * 60 * 24 * 30; // 30 days      //60 * 60 * 24 * 90; // minimum age for coin age
         consensus.nModifierInterval = 6 * 60 * 60; // Modifier interval: time to elapse before new modifier is computed
-        consensus.nCoinbaseMaturity = 30;
+        consensus.nCoinbaseMaturity = 500;
 
-        consensus.fPowAllowMinDifficultyBlocks = false;
-        consensus.fPowNoRetargeting = false;
+        consensus.fPowAllowMinDifficultyBlocks = true;
+        consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         // The best chain should have at least this much work.
@@ -129,19 +127,19 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xfc;
-        pchMessageStart[1] = 0xc4;
-        pchMessageStart[2] = 0xba;
-        pchMessageStart[3] = 0xd2;
+        pchMessageStart[0] = 0xf1;
+        pchMessageStart[1] = 0xe6;
+        pchMessageStart[2] = 0xf9;
+        pchMessageStart[3] = 0xa2;
         vAlertPubKey = ParseHex("04a8a03f1089ad6e9c13b7edc2ece07e9537ad7031575ae19c5ef69d5310f3a9ec86873fc0bf10c7da6c379d33cde306c13f58bcbcd556bceb6b1b35090a80e058");
         nDefaultPort = 9999;
         nPruneAfterHeight = 100000;
         m_assumed_blockchain_size = 1;
         m_assumed_chain_state_size = 0;
 
-        genesis = CreateGenesisBlock(1554579000, 1554579300, 3204424, 0x1e0fffff, 1, 0);
+        genesis = CreateGenesisBlock(1554579000, 1554579300, 464441699, 0x1d00ffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000da5ed0c69a3200c4c896492fc965e47011843d9e5de05041867c8e1b4f1"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000000009e42d72910839035870b79578f9b53941d742fa0f93b55a1c1b83c56"));
         assert(genesis.hashMerkleRoot == uint256S("0xd87e2823fecc64d04b2475a48d8ae4dba9d0e46addaaaa9150b6a666e555f3b4"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
@@ -162,7 +160,7 @@ public:
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         m_is_test_chain = false;
@@ -170,24 +168,17 @@ public:
 
         checkpointData = {
             {
-                {0,     uint256S("0x00000da5ed0c69a3200c4c896492fc965e47011843d9e5de05041867c8e1b4f1")},
-                // {10,    uint256S("0x7bb955c37fc263a094857d69d2b36afc56f2b94e20dd6549815dda1f1d5278f3")},
-                // {1000,  uint256S("0x2ec0adf2e97568b59d784ab178a68a718c589fd86a15185cc00e1c34935d3b08")},
-                // {2000,  uint256S("0xe38fc8a702609c7dcd993411a9a71998663d41aa3f56dee1804d883a1aab0540")},
-                // {3000,  uint256S("0xea2f24581c635c32db51f30a7f95ee3b903772fd95d612c91be294c9853f4698")},
-                // {4000,  uint256S("0x5fb871be5a8cb3b94516096c3c9f4311522ba040c72f56ccffd4406690eadb97")},
-                // {5000,  uint256S("0x7f9f4c038fd3f3c882b266caa07c702d083d9a8680ec54afb9715325e3944c22")},
-                // {6000,  uint256S("0xd5ab5fc17b776313bf83bda05e16e03a8507f87b44f92e3668ae9450aa85924d")},
-                // {7000,  uint256S("0x62d0fe4a0e1b5dc2b121e5147072260eaebff1c0faadafce339b49e0e02a8300")},
-                // {8000,  uint256S("0x10aad1efb42dd1a138636a36ee055915f8e047f4ce748202e607503efafcd378")},
-                // {9000,  uint256S("0x4f50e614c0ffb4bd463361c09ec1abcf66912e96f983ea9d1aa1a3e94b36df7a")},
-                // {10001, uint256S("0xe56b6548995455c55562c46463f6856bbb28624b2761261ac8d11c0de731d70a")} // Last PoW            
+                {0,         uint256S("0x000000009e42d72910839035870b79578f9b53941d742fa0f93b55a1c1b83c56")}
+                // {100,       uint256S("0x0000000000478c57c5b8d62ab73353f6f5c9d538808912e7111ce90f20460d6b")},
+                // {500,       uint256S("0x00000000001104d16645f5f56f352b92ba6addce22f410ee759403f7a5f4036e")},
+                // {1000,      uint256S("0x0000000000194d2547fe3780bbef28a0bf1063be1efdb9e300d26e91d0d8a210")},
+                // {1342,      uint256S("0x0ecb1ac1acd8701b01a6c6014179787cdd60aa8ba69bbb0fb0dceb4642d295b1")}
             }
         };
 
         chainTxData = ChainTxData{
             // Data as of block 967c14abf21214639aeff0a270c4543cd3b80fe53178384ac5aa3c277662f1d0 (height 589659).
-            1554578100, // * UNIX timestamp of last known number of transactions
+            1554579000, // * UNIX timestamp of last known number of transactions
             0,    // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the ChainStateFlushed debug.log lines)
             0 // * estimated number of transactions per second after that timestamp
@@ -226,12 +217,12 @@ public:
         consensus.nMinimumChainWork = uint256S("0x00");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000002cea8efe2ac2fb8092e60c40e43d96c196852e84794a2ec505612836f8f"); //1135275
+        consensus.defaultAssumeValid = uint256S("0x00000000f3288c058d3fef6e6de1ff85e2d67c6a87b46d3f75a5289c6fde68b2"); //1135275
 
-        pchMessageStart[0] = 0xf2;
-        pchMessageStart[1] = 0xc3;
-        pchMessageStart[2] = 0xb9;
-        pchMessageStart[3] = 0xd4;
+        pchMessageStart[0] = 0xf1;
+        pchMessageStart[1] = 0xe6;
+        pchMessageStart[2] = 0xf9;
+        pchMessageStart[3] = 0xa2;
         vAlertPubKey = ParseHex("04e7cf35e1cdf80e8930abd12a54bbfc7f11967357798197184d93b5aceff942221d22c1c885a556ff27a13c9172fdd22f4e392a6f3f02f04149142b0220b7191f");
         nDefaultPort = 19999;
         nPruneAfterHeight = 100000;
@@ -324,10 +315,10 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x000002cea8efe2ac2fb8092e60c40e43d96c196852e84794a2ec505612836f8f");
 
-        pchMessageStart[0] = 0xf2;
-        pchMessageStart[1] = 0xc3;
-        pchMessageStart[2] = 0xb9;
-        pchMessageStart[3] = 0xd4;
+        pchMessageStart[0] = 0xf1;
+        pchMessageStart[1] = 0xe6;
+        pchMessageStart[2] = 0xf9;
+        pchMessageStart[3] = 0xa1;
         vAlertPubKey = ParseHex("04383862439513e940f6fcbf62d365c162a5256920c2c25b0b4266fdee4a443d71cfe224dbccff6fdb2ea57a37eb0cbec5637ebea06f63c70ca093672fbdc27643");
         nDefaultPort = 19999;
         nPruneAfterHeight = 1000;

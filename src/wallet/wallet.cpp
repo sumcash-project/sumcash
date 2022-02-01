@@ -4539,10 +4539,12 @@ bool CWallet::CreateCoinStake(const CWallet* pwallet, unsigned int nBits, int64_
         CAmount nReward = GetProofOfStakeReward(nCoinAge, txNew.nTime, ::ChainActive().Tip()->nMoneySupply);
         // Refuse to create mint that has zero or negative reward
         if(nReward <= 0) {
-          return false;
+            LogPrintf("nCredit=%d, nReward=%d\n", nCredit, nReward);
+        //   return false;
         }
         nCredit += nReward;
     }
+    LogPrintf("calculated nCredit=%d\n", nCredit);
 
     CAmount nMinFee = 0;
     CAmount nMinFeeBase = (IsProtocolV07(txNew.nTime) ? MIN_TX_FEE : MIN_TX_FEE_PREV7);
@@ -4556,6 +4558,8 @@ bool CWallet::CreateCoinStake(const CWallet* pwallet, unsigned int nBits, int64_
         }
         else
             txNew.vout[1].nValue = nCredit - nMinFee;
+
+        LogPrintf("txNew.vout[1].nValue=%d, txNew.vout[2].nValue=%d\n", txNew.vout[1].nValue, txNew.vout[2].nValue);
 
         // Sign
         int nIn = 0;
