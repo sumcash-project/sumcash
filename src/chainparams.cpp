@@ -116,12 +116,12 @@ public:
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000001"); // 350000
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000001"); // 0
         // consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000002a0fac8b39f476"); // 350000
 
         // By default assume that the signatures in ancestors of this block are valid.
-        // consensus.defaultAssumeValid = uint256S("0xa3a0ffa0dbca75923ad6a53d3878d62f8b35c363282df3f13ded9e4fda921e63");  // 380000
-        consensus.defaultAssumeValid = uint256S("0x00000da5ed0c69a3200c4c896492fc965e47011843d9e5de05041867c8e1b4f1");  // 380000
+        // consensus.defaultAssumeValid = uint256S("0xa3a0ffa0dbca75923ad6a53d3878d62f8b35c363282df3f13ded9e4fda921e63");  // 0
+        consensus.defaultAssumeValid = uint256S("0x00000da5ed0c69a3200c4c896492fc965e47011843d9e5de05041867c8e1b4f1");  // 0
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
