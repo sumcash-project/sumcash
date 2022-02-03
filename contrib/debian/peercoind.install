@@ -1,2 +1,2 @@
-usr/local/bin/peercoind usr/bin
-usr/local/bin/peercoin-cli usr/bin
+usr/local/bin/sumcashd usr/bin
+usr/local/bin/sumcash-cli usr/bin

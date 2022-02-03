@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Peercoin"
-            VALUE "FileDescription",    "peercoin-cli (JSON-RPC client for " PACKAGE_NAME ")"
+            VALUE "CompanyName",        "Sumcash"
+            VALUE "FileDescription",    "sumcash-cli (JSON-RPC client for " PACKAGE_NAME ")"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "peercoin-cli"
+            VALUE "InternalName",       "sumcash-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "peercoin-cli.exe"
-            VALUE "ProductName",        "peercoin-cli"
+            VALUE "OriginalFilename",   "sumcash-cli.exe"
+            VALUE "ProductName",        "sumcash-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END
