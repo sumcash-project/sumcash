@@ -117,6 +117,9 @@ public:
         consensus.nModifierInterval = 6 * 60; // Modifier interval: time to elapse before new modifier is computed
         consensus.nCoinbaseMaturity = 500;
 
+        // Segwit
+        // consensus.SegwitHeight = 1001;
+
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016

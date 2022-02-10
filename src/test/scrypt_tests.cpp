@@ -2,7 +2,7 @@
 
 #include "uint256.h"
 #include "util.h"
-#include "utilstrencodings.h"
+#include "util/strencodings.h"
 #include "crypto/scrypt.h"
 
 BOOST_AUTO_TEST_SUITE(scrypt_tests)

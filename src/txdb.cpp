@@ -284,8 +284,6 @@ bool CBlockTreeDB::LoadBlockIndexGuts(const Consensus::Params& consensusParams, 
                 pindexNew->nStakeTime     = diskindex.nStakeTime;
                 pindexNew->hashProofOfStake = diskindex.hashProofOfStake;
 
-                if (!CheckProofOfWork(pindexNew->GetBlockHash(), pindexNew->nBits, consensusParams))
-                     return error("%s: CheckProofOfWork failed: %s", __func__, pindexNew->ToString());
                  // Litecoin: Disable PoW Sanity check while loading block index from disk.
                  // We use the sha256 hash for the block index for performance reasons, which is recorded for later use.
                  // CheckProofOfWork() uses the scrypt hash which is discarded after a block is accepted.

@@ -27,8 +27,8 @@
  * online backup system.
  */
 
-#include <crypto/scrypt.h>
-
+#include "crypto/scrypt.h"
+//#include "util.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -141,8 +141,8 @@ PBKDF2_SHA256(const uint8_t *passwd, size_t passwdlen, const uint8_t *salt,
 	HMAC_SHA256_CTX PShctx, hctx;
 	size_t i;
 	uint8_t ivec[4];
-	uint8_t U[32];
-	uint8_t T[32];
+	uint8_t U[32] = {};
+	uint8_t T[32] = {};
 	uint64_t j;
 	int k;
 	size_t clen;

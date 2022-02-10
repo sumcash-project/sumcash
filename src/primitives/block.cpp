@@ -7,7 +7,7 @@
 
 #include <hash.h>
 #include <tinyformat.h>
-#include <util/strencodings.h>
+#include "util/strencodings.h"
 #include <crypto/common.h>
 #include <crypto/scrypt.h>
 
@@ -37,4 +37,25 @@ std::string CBlock::ToString() const
         s << "  " << tx->ToString() << "\n";
     }
     return s.str();
+}
+
+void print()
+{
+    // printf("CBlock(hash=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%" "zu"", vchBlockSig=%s)\n",
+    //     GetHash().ToString().c_str(),
+    //     nVersion,
+    //     hashPrevBlock.ToString().c_str(),
+    //     hashMerkleRoot.ToString().c_str(),
+    //     nTime, nBits, nNonce,
+    //     vtx.size(),
+    //     HexStr(vchBlockSig.begin(), vchBlockSig.end()).c_str());
+    // for (unsigned int i = 0; i < vtx.size(); i++)
+    // {
+    //     printf("  ");
+    //     vtx[i]->print();
+    // }
+    // printf("  vMerkleTree: ");
+    // for (unsigned int i = 0; i < vMerkleTree.size(); i++)
+    //     printf("%s ", vMerkleTree[i].ToString().c_str());
+    // printf("\n");
 }
