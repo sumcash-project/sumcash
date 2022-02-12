@@ -118,7 +118,7 @@ public:
         consensus.nCoinbaseMaturity = 500;
 
         // Segwit
-        // consensus.SegwitHeight = 1001;
+        consensus.SegwitHeight = 1001;
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
